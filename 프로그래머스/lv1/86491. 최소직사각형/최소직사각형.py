@@ -1,12 +1,10 @@
 def solution(sizes):
-    
-    for size in sizes:
-        size.sort()     # 앞에 작은 거, 뒤에 큰 거.
-        
-    w = 1
-    h = 1
-    for size in sizes:
-        w = max(w, size[0]) # 작은 거 중에 젤 큰 거
-        h = max(h, size[1]) # 큰 거 중에 젤 큰거.
-    
-    return w * h
+    answer = 0
+    result = [0, 0]
+    for w, h in sizes:
+        if w > h:
+            w, h = h, w
+        result[0] = max(result[0], w)
+        result[1] = max(result[1], h)
+    answer = result[0] * result[1]
+    return answer
